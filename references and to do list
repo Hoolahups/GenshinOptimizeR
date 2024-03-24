@@ -1,0 +1,41 @@
+https://genshin-impact.fandom.com/wiki/Weapon/Base_Attack_Scaling
+this is for weapon level references
+
+https://genshin-impact.fandom.com/wiki/Character/Level_Scaling
+this is for character level references
+
+https://docs.google.com/spreadsheets/d/1LM4eWIYlf8wE_RJAwDPYywyNcaor-OhxZFW7udLe2gU/edit#gid=158600242
+this is for referencing and checking my math
+
+
+TO DO:
+get ascension stats from https://genshin-impact.fandom.com/wiki/Character/Comparison
+calculate stats at any level for every character
+
+get weapon scaling
+get weapon stats
+calculate weapon stats for every weapon
+
+set up a tag system for activating stat boosts from weapons/artifacts/talents
+
+get talent info from wiki
+
+set it up so that the scraped information stays in a file with a version number, when you access this file, check the version number with one from the wiki. If theyre the same use it, if not rescrape and update the file.
+
+set up which characters can enable which tags (furina enables hurting, geo characters enable crystallize1, electro pyro hydro cryo enable crystallize2, same with swirl)
+
+set up single character optimization single hit (artifacts only) (use Rcpp for this)
+set up single character optimization single hit (with weapons)
+
+get timing and frame data for every movement in the game, this will take time and will have to be manually updated every update.
+
+set up cycle optimization for single character
+
+set up team effects and enemy effects, as well as make the tag system robust to teams
+
+set up cycle optimization for single character with a fixed team
+
+set up team optimization for single hits
+
+set up team cycle optimization
+
