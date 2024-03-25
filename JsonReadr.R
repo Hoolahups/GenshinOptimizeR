@@ -40,4 +40,8 @@ JsonReadr <- function(){
     artifact_list[[index]] <- artifact
     index <- index + 1
   }
+  #set working directory
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+  read_data <- list(weapon_list, artifact_list, character_list)
+  return(read_data)
 }

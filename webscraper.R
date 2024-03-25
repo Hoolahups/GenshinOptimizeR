@@ -1,3 +1,4 @@
+webscraper <- function(){
 url <- "https://genshin-impact.fandom.com/wiki/Character/Level_Scaling"
 html <- read_html(url)
 
@@ -82,8 +83,6 @@ for (i in seq_along(rows)) {
 level_multipliers<- data.frame("level" = ID, "star4" = star4, "star5" = star5)
 level_multipliers <- level_multipliers[order(level_multipliers$level), ]
 
-
-#Max Values
 tbody <- parent_node[4] %>% html_nodes("tbody")
 
 rows <- tbody %>% html_nodes("tr")
@@ -125,3 +124,46 @@ rownames(level_max) <- c("HP", "ATK", "DEF")
 ascension <- c(0, 38/182, 65/182, 101/182, 128/182, 155/182, 1)
 ascension_mult <- c(0,0,1,2,2,3,4)
 
+#Ascension stats
+url <- "https://genshin-impact.fandom.com/wiki/Character/Comparison"
+html <- read_html(url)
+
+parent_node <- html %>% html_nodes("table")
+
+tbody <- parent_node[1] %>% html_nodes("tbody")
+
+rows <- tbody %>% html_nodes("tr")
+
+ascension_stats <- list()
+
+# Loop through rows and extract data from child nodes (e.g., cells)
+for (i in seq_along(rows)) {
+  # Skip the first row
+  if (i == 1)
+    next
+  
+  row <- rows[[i]]
+  
+  # Select cell nodes within the current row
+  cells <- row %>% html_nodes("td")
+  
+  # Extract text from cell nodes
+  cell_texts <- cells %>% html_text()
+  
+  # Remove newline characters
+  remove_newline <- function(x) {
+    gsub("\n", "", x)
+  }
+  cell_texts_clean <- remove_newline(cell_texts)
+  
+  # Set up for the dataframe
+  column_name <- as.character(cell_texts_clean[2])
+  column_values <- as.character(cell_texts_clean[6])
+  
+  # Store column values in the list
+  ascension_stats[[column_name]] <- column_values
+  
+}
+character_stat_list <- list(level_max,level_multipliers,level_scaling, ascension_stats, ascension, ascension_mult)
+return(character_stat_list)
+}

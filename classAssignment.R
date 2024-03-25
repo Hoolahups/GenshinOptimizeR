@@ -1,6 +1,6 @@
 make_chara_raw <- function(x){
-  character_data <- helper_chara(x)
-  validate_chara(character_data)
+  character_data <- helper_chara_raw(x)
+  validate_chara_raw(character_data)
   class(character_data) <- "Chara_raw"
   return(character_data)
 }
@@ -53,8 +53,8 @@ is.Chara_raw <- function(x) {
 
 
 make_weapon_raw <- function(x){
-  weapon_data <- helper_weapon(x)
-  validate_weapon(weapon_data)
+  weapon_data <- helper_weapon_raw(x)
+  validate_weapon_raw(weapon_data)
   class(weapon_data) <- "Weapon_raw"
   return(weapon_data)
 }
